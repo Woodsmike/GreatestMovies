@@ -1,0 +1,41 @@
+﻿@model IEnumerable<GreatestMovies.Models.Actor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<div class="row container">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 card">
+            <h3>
+                Actor's name: <br /> @Html.DisplayFor(modelItem => item.FirstName)
+                @Html.DisplayFor(modelItem => item.LastName)
+            </h3>
+         
+            <h4>
+                This actor was born on: @item.DOB.ToShortDateString()
+            </h4>
+            <h4>
+                This actor's nationality is: @Html.DisplayFor(modelItem => item.Nationality)
+            </h4>
+            <h4>
+                Gender: @Html.DisplayFor(modelItem => item.Gender)
+            </h4>
+            <p id="endLink">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ActorID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ActorID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ActorID })
+            </p>
+        </div>
+    }
+</div>
+
+
